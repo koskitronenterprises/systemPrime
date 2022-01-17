@@ -61,7 +61,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 //place robot in between left and center markers if bearing less than -8, marker is on left, if greater than 8, in center, if you cant see it, its on right
-@TeleOp(name="2.OMNIStrafingv3", group="Iterative Opmode")
+@TeleOp(name="1.Use me for Teleop", group="Iterative Opmode")
 
 
 

@@ -35,7 +35,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 
  @Autonomous(name = "Red Warehouse", group = "")
- public class RedWarehouse extends LinearOpMode {
+ public class AutonomousRedWarehouse extends LinearOpMode {
      //////////MOTOR AND SERVO DEFINITIONS
 
      //left motors
