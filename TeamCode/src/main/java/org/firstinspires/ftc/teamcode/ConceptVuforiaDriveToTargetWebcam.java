@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -40,7 +40,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 
 @TeleOp(name="Drive To Target", group = "Concept")
-@Disabled
 public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
 {
     // Adjust these numbers to suit your robot.
@@ -66,14 +65,14 @@ public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " Ad1u0cX/////AAABmSuPiafxZUXLisBkrqZvKakdkJlQlNy1pSwPKr80TeG+3kJBTuFSsmFkJdfFOngQTSKEDt9/WwcHgbEli4A0EbEOdeB73sxwWDjhNNYWqauwqFLLL2TujgAT1X42LY+fchRxvE7AcQWWS5bF+FYRY+NTLaWHbtTBY0Ta+N+Ozw72QOjq1RNv0o4+Cl9SuTRfr2YVn8ySYl48HZ6v3vujobcCrJqNv24+7Nul/XUulPeKyGFT3ye+CZha8uVKiDCyPiMXH4OrMzhCKjipfbVwjRFjAIAd91U27ZlRHhKOy4TCBBqYzkDFarpcJTkvXSIaU7C08U0G0kZipTEIEYBjxgzEQ/P9LxkKrAQ1fxFQmXKD ";
+            "Ad1u0cX/////AAABmSuPiafxZUXLisBkrqZvKakdkJlQlNy1pSwPKr80TeG+3kJBTuFSsmFkJdfFOngQTSKEDt9/WwcHgbEli4A0EbEOdeB73sxwWDjhNNYWqauwqFLLL2TujgAT1X42LY+fchRxvE7AcQWWS5bF+FYRY+NTLaWHbtTBY0Ta+N+Ozw72QOjq1RNv0o4+Cl9SuTRfr2YVn8ySYl48HZ6v3vujobcCrJqNv24+7Nul/XUulPeKyGFT3ye+CZha8uVKiDCyPiMXH4OrMzhCKjipfbVwjRFjAIAd91U27ZlRHhKOy4TCBBqYzkDFarpcJTkvXSIaU7C08U0G0kZipTEIEYBjxgzEQ/P9LxkKrAQ1fxFQmXKD ";
 
     VuforiaLocalizer vuforia    = null;
     OpenGLMatrix targetPose     = null;
     String targetName           = "";
 
-    private DcMotor leftDrive   = null;
-    private DcMotor rightDrive  = null;
+    //private DcMotor leftDrive   = null;
+    //private DcMotor rightDrive  = null;
 
     @Override public void runOpMode()
     {
@@ -93,15 +92,21 @@ public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
 
         // Connect to the camera we are to use.  This name must match what is set up in Robot Configuration
         //TODO Modify the contents of the file from Maven to reduce the "size" of the alliance wall and stuff
-        parameters.cameraName = hardwareMap.get(WebcamName.class, "Webcam 1");
+        parameters.cameraName = hardwareMap.get(WebcamName.class, "Webcam");
         this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
+/*
         // Load the trackable objects from the Assets file, and give them meaningful names
         VuforiaTrackables targetsFreightFrenzy = this.vuforia.loadTrackablesFromAsset("FreightFrenzy-new");
         targetsFreightFrenzy.get(0).setName("Blue Storage");
         targetsFreightFrenzy.get(1).setName("Blue Alliance Wall");
         targetsFreightFrenzy.get(2).setName("Red Storage");
         targetsFreightFrenzy.get(3).setName("Red Alliance Wall");
+*/
+        // Load the trackable objects from the Assets file, and give them meaningful names
+        VuforiaTrackables targetsFreightFrenzy = this.vuforia.loadTrackablesFromAsset("UseMe");
+        targetsFreightFrenzy.get(0).setName("Scoring Element");
+
 
         // Start tracking targets in the background
         targetsFreightFrenzy.activate();
@@ -109,13 +114,13 @@ public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        //leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+        //rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
-        leftDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        //leftDrive.setDirection(DcMotor.Direction.FORWARD);
+        //rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData(">", "Press Play to start");
         telemetry.update();
@@ -194,8 +199,8 @@ public class ConceptVuforiaDriveToTargetWebcam extends LinearOpMode
             // Calculate left and right wheel powers and send to them to the motors.
             double leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             double rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
-            leftDrive.setPower(leftPower);
-            rightDrive.setPower(rightPower);
+            //leftDrive.setPower(leftPower);
+            //rightDrive.setPower(rightPower);
 
             sleep(10);
         }

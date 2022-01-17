@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;
@@ -75,9 +75,9 @@ import java.util.List;
  * is explained below.
  */
 
-@TeleOp(name="Vuforia Field Nav Webcam", group ="Concept")
+@TeleOp(name="Field Nav Webcam- Proof of Concept", group ="Concept")
 @Disabled
-public class FieldNavigationWithWebcam extends LinearOpMode {
+public class FieldNavigationWebcam extends LinearOpMode {
 
     /*
      * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
@@ -92,8 +92,7 @@ public class FieldNavigationWithWebcam extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            //" --- YOUR NEW VUFORIA KEY GOES HERE  --- ";
-    "Ad1u0cX/////AAABmSuPiafxZUXLisBkrqZvKakdkJlQlNy1pSwPKr80TeG+3kJBTuFSsmFkJdfFOngQTSKEDt9/WwcHgbEli4A0EbEOdeB73sxwWDjhNNYWqauwqFLLL2TujgAT1X42LY+fchRxvE7AcQWWS5bF+FYRY+NTLaWHbtTBY0Ta+N+Ozw72QOjq1RNv0o4+Cl9SuTRfr2YVn8ySYl48HZ6v3vujobcCrJqNv24+7Nul/XUulPeKyGFT3ye+CZha8uVKiDCyPiMXH4OrMzhCKjipfbVwjRFjAIAd91U27ZlRHhKOy4TCBBqYzkDFarpcJTkvXSIaU7C08U0G0kZipTEIEYBjxgzEQ/P9LxkKrAQ1fxFQmXKD";
+            " Ad1u0cX/////AAABmSuPiafxZUXLisBkrqZvKakdkJlQlNy1pSwPKr80TeG+3kJBTuFSsmFkJdfFOngQTSKEDt9/WwcHgbEli4A0EbEOdeB73sxwWDjhNNYWqauwqFLLL2TujgAT1X42LY+fchRxvE7AcQWWS5bF+FYRY+NTLaWHbtTBY0Ta+N+Ozw72QOjq1RNv0o4+Cl9SuTRfr2YVn8ySYl48HZ6v3vujobcCrJqNv24+7Nul/XUulPeKyGFT3ye+CZha8uVKiDCyPiMXH4OrMzhCKjipfbVwjRFjAIAd91U27ZlRHhKOy4TCBBqYzkDFarpcJTkvXSIaU7C08U0G0kZipTEIEYBjxgzEQ/P9LxkKrAQ1fxFQmXKD";
 
     // Since ImageTarget trackables use mm to specifiy their dimensions, we must use mm for all the physical dimension.
     // We will define some constants and conversions here
@@ -113,7 +112,7 @@ public class FieldNavigationWithWebcam extends LinearOpMode {
 
     @Override public void runOpMode() {
         // Connect to the camera we are to use.  This name must match what is set up in Robot Configuration
-        webcamName = hardwareMap.get(WebcamName.class, "Webcam");
+        webcamName = hardwareMap.get(WebcamName.class, "Webcam 1");
 
         /*
          * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
@@ -138,7 +137,7 @@ public class FieldNavigationWithWebcam extends LinearOpMode {
 
         // Load the data sets for the trackable objects. These particular data
         // sets are stored in the 'assets' part of our application.
-        targets = this.vuforia.loadTrackablesFromAsset("FreightFrenzy-new");
+        targets = this.vuforia.loadTrackablesFromAsset("FreightFrenzy");
 
         // For convenience, gather together all the trackable objects in one easily-iterable collection */
         List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
